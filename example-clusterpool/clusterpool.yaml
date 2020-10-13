@@ -1,0 +1,17 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterPool
+metadata:
+  name: hktest
+  namespace: hive
+spec:
+  baseDomain: hive.multicloudops.io
+  imageSetRef:
+    name: openshift-v4.5.13
+  platform:
+    aws:
+      credentialsSecretRef:
+        name: mycluster-aws-creds
+      region: eu-west-1
+  pullSecretRef:
+    name: global-pull-secret
+  size: 1

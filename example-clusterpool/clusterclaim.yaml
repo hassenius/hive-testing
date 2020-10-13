@@ -1,0 +1,11 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterClaim
+metadata:
+  name: testclaim1
+  namespace: hive
+spec:
+  clusterPoolName: hktest
+  subjects:
+    - kind: Group
+      apiGroup: rbac.authorization.k8s.io
+      name: 'system:masters'

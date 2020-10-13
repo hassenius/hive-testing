@@ -1,0 +1,25 @@
+# Adds namespace to all resources.
+namespace: hive
+
+# Labels to add to all resources and selectors.
+#commonLabels:
+#  someName: someValue
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: global-aws-creds
+    envs: 
+      - aws.creds
+  - name: ssh-key
+    envs: 
+      - ssh.keys
+  - name: global-pull-secret
+    files:
+      - .dockerconfigjson=dockerconfig.json
+    type: kubernetes.io/dockerconfigjson
+
+resources:
+- namespace.yaml
+- hive-operator-sub.yaml
